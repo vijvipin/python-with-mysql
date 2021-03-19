@@ -1,4 +1,4 @@
-# python-with-mysql:  In this example we will run a simple python page which will just connect to a mySQL database and show values of ENV values on the front end - once connected to the database
+### python-with-mysql:  In this example we will run a simple python page which will just connect to a mySQL database and show values of ENV values on the front end - once connected to the database
 
 ## First Let's create image and run the container:
   ### Create Docker image 
@@ -22,19 +22,27 @@
   ```
   
 ## Let's run on Kubernetes:
-#### Now that Python page is running but not connected to mySQL. Lets take first step to run on kubernetes and also connect to database: 
-## Run mySQL on kubenetes:
-```
-kubectl apply -f .\mysql-pod-definition.yaml
-```
-## Check the container image which is created:
-```
-docker container ps
-```
+  #### Now that Python page is running but not connected to mySQL. Lets take first step to run on kubernetes and also connect to database: 
+  ## Run mySQL on kubenetes:
+  ```
+  kubectl apply -f .\mysql-pod-definition.yaml
+  ```
+  ## Check the container image which is created:
+  ```
+  docker container ps
+  ```
 
-## Connect to mySQL 
-```
-docker exec -it 35e039fc8ffc  mysql -uroot -p
+  ## Connect to mySQL 
+  ```
+  docker exec -it 35e039fc8ffc  mysql -uroot -p
 
-```
-This will ask for password: Enter 'password' and now > mysql promt is shown, which means mySQL pod is now running on Kubenetes
+  ```
+#### This will ask for password: Enter 'password' and now > mysql promt is shown, which means mySQL pod is now running on Kubenetes
+
+  ### Now lets create secret file which will store all our passwords to connect with database.
+
+  ```
+  kubectl apply -f secret-data.yaml
+  ```
+
+  ### 
